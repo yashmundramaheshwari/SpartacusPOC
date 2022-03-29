@@ -1,0 +1,6 @@
+<ng-container *ngIf = "product$ | async as product">
+    <h1>{{ product.name }}</h1>
+    <h3> {{ product.price.formattedValue }}</h3>
+    <p> {{ product.code }} </p>
+    <span>Read All {{ product.numberOfReviews }} reviews</span>
+</ng-container>

@@ -1,0 +1,71 @@
+ <div class="container">
+  <div [hidden]="submitted">
+    <h1>Sumbit your request</h1>
+    <div id="alert-message" style="display: none;"  class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Thank you</strong>We will successfully add your response.
+      <button type="button" (click)="closeAlert()" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form  (ngSubmit)="onSubmit();newContactUs();contactForm.reset()" #contactForm="ngForm">      
+      <div class="form-group">
+        <label for="title">Please choose your issue below*</label>
+        <select class="form-control" id="title"
+                required
+                [(ngModel)]="model.title" name="title"
+                #title="ngModel">
+          <option *ngFor="let tle of titles" [value]="tle">{{tle}}</option>
+        </select>
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          Title is required
+        </div>
+      </div>
+
+      <div class="group-form">
+        <input type="text" class="form-control" id="firstName"
+               required
+               [(ngModel)]="model.firstName" name="firstName"
+               #firstName="ngModel" placeholder="First Name*">
+        <div [hidden]="firstName.valid || firstName.pristine"
+             class="alert alert-danger">
+          first name is required
+        </div>
+      </div>
+
+      <div class="group-form">
+        <input type="text" class="form-control" id="lastName"
+        required
+        [(ngModel)]="model.lastName" name="lastName"
+        #lastName="ngModel" placeholder="Last Name*">
+      <div [hidden]="lastName.valid || lastName.pristine"
+        class="alert alert-danger">
+        last Name is required
+      </div>
+      </div>
+
+      <div class="group-form">
+        <input type="text" class="form-control" id="email"
+        required
+        [(ngModel)]="model.email" name="email"
+        #email="ngModel" placeholder="Email Address*">
+      <div [hidden]="email.valid || email.pristine"
+        class="alert alert-danger">
+        email is required
+      </div>
+      </div>
+
+
+      <div class="group-form">
+        <input type="text" class="form-control" id="description"
+        required
+        [(ngModel)]="model.description" name="description"
+        #description="ngModel">
+      <div [hidden]="description.valid || description.pristine"
+        class="alert alert-danger">
+      </div>
+      </div>
+
+      <button type="submit" class="btn btn-secondary" [disabled]="!contactForm.form.valid">Submit</button>
+    </form>
+  </div>
+</div>
